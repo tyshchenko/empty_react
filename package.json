@@ -1,0 +1,90 @@
+{
+  "name": "tronenergize",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@mui/icons-material": "^5.2.4",
+    "@mui/material": "^5.2.4",
+    "@mui/styles": "^5.2.3",
+    "@noble/secp256k1": "^2.1.0",
+    "@reduxjs/toolkit": "^1.7.1",
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "@tronweb3/tronwallet-abstract-adapter": "1.1.6",
+    "@tronweb3/tronwallet-adapter-react-hooks": "1.1.7",
+    "@tronweb3/tronwallet-adapter-react-ui": "1.1.8",
+    "@tronweb3/tronwallet-adapters": "1.2.1",
+    "@wagmi/core": "1.1.0",
+    "@walletconnect/heartbeat": "1.0.1",
+    "@walletconnect/jsonrpc-provider": "1.0.6",
+    "@walletconnect/jsonrpc-utils": "1.0.4",
+    "@walletconnect/jsonrpc-ws-connection": "1.0.5",
+    "@walletconnect/keyvaluestorage": "1.0.2",
+    "@walletconnect/logger": "2.0.1",
+    "@walletconnect/relay-api": "1.0.7",
+    "@walletconnect/relay-auth": "1.0.4",
+    "@walletconnect/safe-json": "1.0.1",
+    "@walletconnect/sign-client": "2.1.4",
+    "@walletconnect/types": "2.1.4",
+    "@walletconnect/utils": "2.1.4",
+    "@web3modal/standalone": "2.4.1",
+    "apexcharts": "^3.49.1",
+    "bignumber.js": "^9.0.1",
+    "buffer": "6.0.3",
+    "crypto-browserify": "3.12.0",
+    "eventemitter3": "4.0.7",
+    "http-browserify": "1.7.0",
+    "https-browserify": "1.0.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "os-browserify": "0.3.0",
+    "qrcode.react": "^1.0.0",
+    "react": "^17.0.2",
+    "react-apexcharts": "^1.4.1",
+    "react-container-dimensions": "^1.4.1",
+    "react-dom": "^17.0.2",
+    "react-intl-universal": "^2.6.21",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "4.0.0",
+    "react-slick": "^0.28.1",
+    "react-textfit": "^1.1.1",
+    "react-toastify": "9.0.3",
+    "react-uuid": "^1.0.2",
+    "react-vis": "^1.11.7",
+    "slick-carousel": "^1.8.1",
+    "stream-browserify": "3.0.0",
+    "tronweb": "5.1.1",
+    "unstorage": "1.9.0",
+    "viem": "0.3.50",
+    "web-vitals": "^2.1.2",
+    "zustand": "4.3.1"
+  },
+  "scripts": {
+    "start": "react-scripts  --openssl-legacy-provider start",
+    "build": "react-scripts  --openssl-legacy-provider build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
