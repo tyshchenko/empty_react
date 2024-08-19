@@ -398,74 +398,8 @@ const Home = (props) => {
   const classes = useStyles();
   const { modal,isConnected,defaultAccount,activeItem,accountInfo,infoenergy } = useSelector(getData);
   const navigate = useHistory();
-  const [partialmodal, setPartialmodal] = useState(false);
-  const [multysig, setMultysig] = useState(false);
-  const [partenergy, setPartenergy] = useState(accountInfo.energy);
-  const [vnrgMsg, setVnrgMsg] = useState("");
-  const [seller, setSeller] = useState("");
-  const [earner, setEarner] = useState("");
-  const [vnrgSellMsg, setVnrgSellMsg] = useState("");
-  const [sortorder, setSortorder] = useState("price");
-  const { getTxlist, txlist } = useTransactions("");
-  const [sellbtn, setSellbtn] = useState("Sell Now");
-  const [disabledSBT, setDisabledSBT] = useState(false);
-  const [iunderstand, setIunderstand] = useState(true);
 
-  
-  const [ items, setItems ] = useState([]);
 
-  
-  const compare = ( a, b ) => {
-    if ( a.active == b.active ) {
-      if ( a[sortorder] < b[sortorder] ){
-        return 1;
-      }
-      if ( a[sortorder] > b[sortorder] ){
-        return -1;
-      }
-      return 0;
-    } else {
-      if ( a.active ){
-        return -1;
-      }
-      return 1;
-    }
-  }
-    
-  useEffect(() => {
-    if (isConnected && defaultAccount != null ) {
-      setSeller(defaultAccount);
-      setEarner(defaultAccount);
-    }
-  }, [defaultAccount, isConnected])
-
-  useEffect(() => {
-    getTxlist();
-    setStore({activePage: 'Exchange'})
-  }, [])
-  
-  useEffect(() => {
-    setPartenergy(accountInfo.energy);
-  }, [accountInfo])
-
-  useEffect(() => {
-    window.interval23 = setInterval(
-      () => getTxlist(),
-      7000
-    )
-    return () => {
-      clearInterval(window.interval23)
-    }
-  }, [])
-    
-  useEffect(() => {
-    if (txlist) {
-      setItems(txlist.sort( compare ));
-      console.log(txlist)
-    }
-  }, [txlist, sortorder])
-
-  
 
   return (
     <div className={classes.root}>
