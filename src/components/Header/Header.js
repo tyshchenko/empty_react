@@ -6,13 +6,13 @@ import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
 import { getData } from "../../store/appStoreSlice";
 import { useSelector } from "react-redux";
-import { initTronLinkWallet, t, setStore, setVariablesInterval } from "../../utils/utils";
+import { t, setStore } from "../../utils/utils";
 import { formatNumber } from '../../utils/helper';
 import Sidebar from "../Sidebar/Sidebar";
 import _ from "lodash";
-import {  WalletActionButton, useWalletModal } from '@tronweb3/tronwallet-adapter-react-ui';
+
 import './style.css';
-import {  useWallet } from '@tronweb3/tronwallet-adapter-react-hooks';
+
 import Config from '../../config';
 import { toast } from 'react-toastify';
 
@@ -151,46 +151,6 @@ const Header = (props) => {
   const { isConnected, defaultAccount, accountInfo, chainid } = useSelector(getData);
   const [burgButton, setBurgButton] = useState(false);
 
-  const { wallet, address, connected, select, connect, disconnect} = useWallet();
-  const { visible, setVisible } = useWalletModal();
-
-  useEffect(async () => {
-    if (connected) {
-      setVariablesInterval();
-      const vatename =  await wallet.adapter.name;
-      console.log(vatename);
-      if (vatename=='TronLink') {
-        const network = await wallet.adapter.network();
-        if (network.networkType == Config.name ) {
-          setStore({defaultAccount: address, isConnected: true, istronlink: true});
-        } else {
-          toast.error("Wrong network selected. Please verify your Wallet settings.");
-          wallet.adapter.switchChain(Config.chainid);
-        }
-      } else {
-        setStore({defaultAccount: address, isConnected: true, istronlink: false});
-      }
-
-    } else {
-      setStore({defaultAccount: null, isConnected: false, istronlink: false});
-    }
-  }, [connected, address, wallet, chainid])
-  
-  useEffect(() => {
-    if (wallet) {
-      setStore({
-        connect: () => connect(),
-      });
-    } else {
-      setStore({
-        connect: () => setVisible(true),
-      });
-    }
-  }, [wallet, connect, connected])
-
-  const handleConnectWallet = (e) => {
-    initTronLinkWallet();
-  }
 
   const closeBurger = () => {
     setBurgButton(false);
@@ -204,30 +164,15 @@ const Header = (props) => {
   return (
     <div className={classes.root}>
       <div className={classes.burger_mobile}>
-        <Link className={classes.logo_link} exact to="/"><img src="/img/logo1.png" alt="Tron Energy Marketplace Tronenergize" height="80" /></Link>
+        <Link className={classes.logo_link} exact to="/"><img src="/img/logo.png" alt="" height="80" /></Link>
         
       </div>
       <Sidebar/>
       <div className={burgButton ? classes.open_burger_menu : classes.burger_menu} >
         <div className={classes.connected_wallet_link}>
-          
-              
-                  <WalletActionButton></WalletActionButton>
               
           
-        
-          { 
-            !isConnected 
-            ? <></>
-            : 
 
-                <div className={classes.smallline}>
-                  {t("Available TRX Balance")}: <span  className={classes.smallt}>{ formatNumber(accountInfo.balance) }</span>TRX | 
-                  {t("Energy")}: <span className={classes.smallt}>{ formatNumber(accountInfo.energy,0) }</span>  | 
-                  {t("Bandwidth")}: <span className={classes.smallt}>{ formatNumber(accountInfo.bandwidth,0) }</span>
-                </div>
-              
-          }        
         
         </div>
       </div>
